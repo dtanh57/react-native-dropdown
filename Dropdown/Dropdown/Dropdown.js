@@ -126,7 +126,9 @@ const Dropdown = forwardRef((props, ref) => {
       );
     }
     let height = 0;
-    let dataRender = defaultValue ? [defaultValue, ...(data || [])] : data;
+    let dataRender = defaultValue
+      ? [defaultValue, ...(data || [])]
+      : [...(data || [])];
     if (Array.isArray(data) && defaultValue) {
       height = data.length < 6 ? 49 * (data.length + 1) : 360;
     } else if (!defaultValue && Array.isArray(data)) {
@@ -238,9 +240,9 @@ Dropdown.propTypes = {
   defaultValue: PropTypes.string,
   onChangeValue: PropTypes.func,
   showIcon: PropTypes.bool,
-  // renderIcon: PropTypes.func,
-  // renderIconWithAnim: PropTypes.func,
-  // renderItem: PropTypes.func,
+  renderIcon: PropTypes.func,
+  renderIconWithAnim: PropTypes.func,
+  renderItem: PropTypes.func,
 };
 
 const styles = StyleSheet.create({
